@@ -1,71 +1,76 @@
-/* Header styling */
-header {
-  text-align: center;
-  padding: 2rem 1rem;
-  background: linear-gradient(135deg, #ff7e5f, #feb47b); /* modern gradient */
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-  color: white;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Shopping Mart</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="logo">🛍️ My Shopping Mart</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#products">Products</a>
+      <a href="#cart">Cart (<span id="cart-count">0</span>)</a>
+    </nav>
+  </header>
 
-/* Stylish heading */
-.shop-heading {
-  font-family: 'Poppins', sans-serif; /* Google Fonts optional */
-  font-size: 3rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: #fff;
-  text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
-  margin-bottom: 0.5rem;
-  transition: transform 0.3s, text-shadow 0.3s;
-}
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Welcome to <span>My Shopping Mart</span></h1>
+      <p>Your one-stop shop for trendy and affordable products.</p>
+      <a href="#products" class="cta-btn">Shop Now</a>
+    </div>
+  </section>
 
-/* Hover animation */
-.shop-heading:hover {
-  transform: scale(1.05);
-  text-shadow: 4px 4px 12px rgba(0,0,0,0.4);
-}
+  <!-- PRODUCT SECTION -->
+  <main>
+    <section id="products" class="products">
+      <h2>Featured Products</h2>
+      <div class="product-grid">
+        <div class="product-card">
+          <img src="images/product1.jpg" alt="Product 1" />
+          <h3>Stylish T-shirt</h3>
+          <p>$10.00</p>
+          <button onclick="addToCart('Stylish T-shirt', 10, 'images/product1.jpg')">Add to Cart</button>
+        </div>
+        <div class="product-card">
+          <img src="images/product2.jpg" alt="Product 2" />
+          <h3>Smart Watch</h3>
+          <p>$25.00</p>
+          <button onclick="addToCart('Smart Watch', 25, 'images/product2.jpg')">Add to Cart</button>
+        </div>
+        <div class="product-card">
+          <img src="images/product3.jpg" alt="Product 3" />
+          <h3>Bluetooth Headphones</h3>
+          <p>$40.00</p>
+          <button onclick="addToCart('Bluetooth Headphones', 40, 'images/product3.jpg')">Add to Cart</button>
+        </div>
+      </div>
+    </section>
 
-/* Nav links */
-nav a {
-  margin: 0 15px;
-  color: #fff;
-  font-weight: 600;
-  text-decoration: none;
-  transition: color 0.3s;
-}
+    <!-- CART SECTION -->
+    <section id="cart" class="cart">
+      <h2>Your Cart</h2>
+      <ul id="cart-items"></ul>
+      <p id="cart-total">Total: $0</p>
+      <div class="checkout">
+        <button onclick="checkoutWithStripe()" class="stripe-btn">Checkout with Stripe</button>
+      </div>
+    </section>
+  </main>
 
-nav a:hover {
-  color: #ffd700; /* golden hover effect */
-}
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 My Shopping Mart — All rights reserved.</p>
+  </footer>
 
-/* Import Google Fonts (optional, place at top of CSS) */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
-
-.cart {
-  margin: 30px auto;
-  max-width: 600px;
-  background: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-#cart-items {
-  list-style: none;
-  padding: 0;
-}
-
-#cart-items li {
-  display: flex;
-  justify-content: space-between;
-  margin: 8px 0;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 5px;
-}
-
-.checkout {
-  margin-top: 15px;
-  display: flex;
-  gap: 10px;
-}
+  <script src="script.js"></script>
+</body>
+</html>
