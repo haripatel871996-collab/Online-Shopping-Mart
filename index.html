@@ -11,19 +11,25 @@
 </head>
 <body>
 
-  <!-- HEADER / NAV -->
+  <!-- HEADER -->
   <header class="navbar">
     <div class="logo">🛍️ My Shopping Mart</div>
+
     <div class="search-bar">
       <input type="text" placeholder="Search for products..." />
       <button>Search</button>
     </div>
-    <nav>
+
+    <nav id="nav-links">
       <a href="#">Home</a>
       <a href="#categories">Categories</a>
       <a href="#products">Products</a>
       <a href="#cart">Cart (<span id="cart-count">0</span>)</a>
+      <button class="login-btn" id="loginBtn">Login</button>
     </nav>
+
+    <!-- Hamburger -->
+    <div class="menu-toggle" id="menuToggle">☰</div>
   </header>
 
   <!-- CATEGORY BAR -->
@@ -36,7 +42,7 @@
     <div class="category">Sports</div>
   </section>
 
-  <!-- HERO SECTION -->
+  <!-- HERO -->
   <section class="hero">
     <div class="hero-text">
       <h1>Welcome to <span>My Shopping Mart</span></h1>
@@ -45,7 +51,7 @@
     </div>
   </section>
 
-  <!-- PRODUCTS SECTION -->
+  <!-- PRODUCTS -->
   <main id="products" class="products">
     <h2>Featured Products</h2>
     <div class="product-grid">
@@ -76,46 +82,23 @@
     </div>
   </main>
 
-  <!-- DEALS SECTION -->
-  <section class="deals">
-    <h2>🔥 Today’s Hot Deals</h2>
-    <div class="deal-banner">
-      <img src="images/deals.jpg" alt="Deals" />
-      <div class="deal-text">
-        <h3>Up to 60% OFF on Electronics!</h3>
-        <a href="#products" class="deal-btn">Shop Deals</a>
-      </div>
+  <!-- LOGIN MODAL -->
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeModal">&times;</span>
+      <h2>Login to My Shopping Mart</h2>
+      <input type="text" placeholder="Email or Username" />
+      <input type="password" placeholder="Password" />
+      <button class="btn">Login</button>
+      <p>Don't have an account? <a href="#" id="signupLink">Sign Up</a></p>
     </div>
-  </section>
+  </div>
 
   <!-- FOOTER -->
   <footer>
-    <div class="footer-grid">
-      <div>
-        <h3>About Us</h3>
-        <p>My Shopping Mart brings you high-quality products at unbeatable prices. We value your trust and satisfaction.</p>
-      </div>
-      <div>
-        <h3>Quick Links</h3>
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#products">Products</a></li>
-          <li><a href="#cart">Cart</a></li>
-          <li><a href="#categories">Categories</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Follow Us</h3>
-        <p>Stay connected with us on social media!</p>
-        <div class="socials">
-          <a href="#">🌐</a>
-          <a href="#">📘</a>
-          <a href="#">📸</a>
-        </div>
-      </div>
-    </div>
-    <p class="copy">© 2025 My Shopping Mart — All Rights Reserved.</p>
+    <p>© 2025 My Shopping Mart — All Rights Reserved.</p>
   </footer>
 
+  <script src="script.js"></script>
 </body>
 </html>
