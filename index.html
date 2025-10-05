@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-<header>
-  <h1 class="shop-heading">My Shopping Mart</h1>
-  <nav>
-    <a href="#">Home</a>
-    <a href="#products">Products</a>
-    <a href="#cart">Cart (<span id="cart-count">0</span>)</a>
-  </nav>
-</header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Shopping Mart</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
 <body>
+  <!-- HEADER -->
   <header>
-    <h1>My Online Shop</h1>
+    <div class="logo">🛍️ My Shopping Mart</div>
     <nav>
       <a href="#">Home</a>
       <a href="#products">Products</a>
@@ -18,52 +20,55 @@
     </nav>
   </header>
 
-  <main>
-    <!-- Products -->
-    <section id="products" class="products">
-      <div class="product-card">
-        <img src="images/product1.jpg" alt="Product 1">
-        <h2>Product 1</h2>
-        <p>$10.00</p>
-        <button onclick="addToCart('Product 1', 10)">Add to Cart</button>
-      </div>
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Welcome to <span>My Shopping Mart</span></h1>
+      <p>Your one-stop shop for trendy and affordable products.</p>
+      <a href="#products" class="cta-btn">Shop Now</a>
+    </div>
+  </section>
 
-      <div class="product-card">
-        <img src="images/product2.jpg" alt="Product 2">
-        <h2>Product 2</h2>
-        <p>$15.00</p>
-        <button onclick="addToCart('Product 2', 15)">Add to Cart</button>
+  <!-- PRODUCT SECTION -->
+  <main>
+    <section id="products" class="products">
+      <h2>Featured Products</h2>
+      <div class="product-grid">
+        <div class="product-card">
+          <img src="images/product1.jpg" alt="Product 1" />
+          <h3>Stylish T-shirt</h3>
+          <p>$10.00</p>
+          <button onclick="addToCart('Stylish T-shirt', 10, 'images/product1.jpg')">Add to Cart</button>
+        </div>
+        <div class="product-card">
+          <img src="images/product2.jpg" alt="Product 2" />
+          <h3>Smart Watch</h3>
+          <p>$25.00</p>
+          <button onclick="addToCart('Smart Watch', 25, 'images/product2.jpg')">Add to Cart</button>
+        </div>
+        <div class="product-card">
+          <img src="images/product3.jpg" alt="Product 3" />
+          <h3>Bluetooth Headphones</h3>
+          <p>$40.00</p>
+          <button onclick="addToCart('Bluetooth Headphones', 40, 'images/product3.jpg')">Add to Cart</button>
+        </div>
       </div>
     </section>
 
-    <!-- Shopping Cart -->
+    <!-- CART SECTION -->
     <section id="cart" class="cart">
       <h2>Your Cart</h2>
       <ul id="cart-items"></ul>
       <p id="cart-total">Total: $0</p>
-
-      <!-- Checkout Buttons -->
       <div class="checkout">
-        <!-- PayPal Checkout -->
-        <form id="paypal-form" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-          <input type="hidden" name="cmd" value="_cart">
-          <input type="hidden" name="upload" value="1">
-          <input type="hidden" name="business" value="your-paypal-email@example.com">
-          <div id="paypal-items"></div>
-          <input type="hidden" name="currency_code" value="USD">
-          <button type="submit">Checkout with PayPal</button>
-        </form>
-
-        <!-- Stripe Checkout -->
-        <a id="stripe-link" href="#" target="_blank">
-          <button class="stripe-btn">Checkout with Stripe</button>
-        </a>
+        <button onclick="checkoutWithStripe()" class="stripe-btn">Checkout with Stripe</button>
       </div>
     </section>
   </main>
 
+  <!-- FOOTER -->
   <footer>
-    <p>© 2025 My Shop. All rights reserved.</p>
+    <p>© 2025 My Shopping Mart — All rights reserved.</p>
   </footer>
 
   <script src="script.js"></script>
