@@ -1,76 +1,293 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Shopping Mart</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-</head>
-<body>
-  <!-- HEADER -->
-  <header>
-    <div class="logo">🛍️ My Shopping Mart</div>
-    <nav>
-      <a href="#">Home</a>
-      <a href="#products">Products</a>
-      <a href="#cart">Cart (<span id="cart-count">0</span>)</a>
-    </nav>
-  </header>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
-  <!-- HERO SECTION -->
-  <section class="hero">
-    <div class="hero-text">
-      <h1>Welcome to <span>My Shopping Mart</span></h1>
-      <p>Your one-stop shop for trendy and affordable products.</p>
-      <a href="#products" class="cta-btn">Shop Now</a>
-    </div>
-  </section>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  <!-- PRODUCT SECTION -->
-  <main>
-    <section id="products" class="products">
-      <h2>Featured Products</h2>
-      <div class="product-grid">
-        <div class="product-card">
-          <img src="images/product1.jpg" alt="Product 1" />
-          <h3>Stylish T-shirt</h3>
-          <p>$10.00</p>
-          <button onclick="addToCart('Stylish T-shirt', 10, 'images/product1.jpg')">Add to Cart</button>
-        </div>
-        <div class="product-card">
-          <img src="images/product2.jpg" alt="Product 2" />
-          <h3>Smart Watch</h3>
-          <p>$25.00</p>
-          <button onclick="addToCart('Smart Watch', 25, 'images/product2.jpg')">Add to Cart</button>
-        </div>
-        <div class="product-card">
-          <img src="images/product3.jpg" alt="Product 3" />
-          <h3>Bluetooth Headphones</h3>
-          <p>$40.00</p>
-          <button onclick="addToCart('Bluetooth Headphones', 40, 'images/product3.jpg')">Add to Cart</button>
-        </div>
-      </div>
-    </section>
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f4f4f4;
+  scroll-behavior: smooth;
+}
 
-    <!-- CART SECTION -->
-    <section id="cart" class="cart">
-      <h2>Your Cart</h2>
-      <ul id="cart-items"></ul>
-      <p id="cart-total">Total: $0</p>
-      <div class="checkout">
-        <button onclick="checkoutWithStripe()" class="stripe-btn">Checkout with Stripe</button>
-      </div>
-    </section>
-  </main>
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(90deg, #007bff, #00c6ff);
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
 
-  <!-- FOOTER -->
-  <footer>
-    <p>© 2025 My Shopping Mart — All rights reserved.</p>
-  </footer>
+.logo {
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.6rem;
+}
 
-  <script src="script.js"></script>
-</body>
-</html>
+.search-bar {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+.search-bar input {
+  border: none;
+  outline: none;
+  padding: 10px 15px;
+  width: 220px;
+  font-size: 0.9rem;
+}
+
+.search-bar button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+nav a {
+  color: #fff;
+  margin: 0 10px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #ffea00;
+}
+
+/* CATEGORY BAR */
+.categories {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  background: #fff;
+  padding: 10px 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.category {
+  margin: 8px 15px;
+  padding: 8px 20px;
+  border-radius: 25px;
+  background: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.3s;
+}
+
+.category:hover {
+  transform: scale(1.05);
+  background: #0056b3;
+}
+
+/* HERO */
+.hero {
+  background: url('images/banner.jpg') center/cover no-repeat;
+  color: white;
+  text-align: center;
+  padding: 120px 20px;
+  position: relative;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+}
+
+.hero-text {
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.hero h1 span {
+  color: #ffea00;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 25px;
+}
+
+.cta-btn {
+  background: #ffea00;
+  color: #000;
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.3s;
+}
+
+.cta-btn:hover {
+  transform: scale(1.05);
+}
+
+/* PRODUCTS */
+.products {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.products h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.product-card {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+.product-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.product-card h3 {
+  margin: 10px 0 5px;
+}
+
+.product-card button {
+  background: #007bff;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.product-card button:hover {
+  background: #0056b3;
+}
+
+/* DEALS */
+.deals {
+  background: linear-gradient(90deg, #ff7e5f, #feb47b);
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.deal-banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.deal-banner img {
+  width: 300px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.deal-text h3 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.deal-btn {
+  background: white;
+  color: #ff7e5f;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+}
+
+.deal-btn:hover {
+  background: #fff8dc;
+}
+
+/* FOOTER */
+footer {
+  background: #222;
+  color: white;
+  padding: 40px 20px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.footer-grid h3 {
+  margin-bottom: 10px;
+}
+
+.footer-grid ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-grid ul li {
+  margin: 8px 0;
+}
+
+.footer-grid ul li a {
+  color: #ccc;
+  text-decoration: none;
+}
+
+.footer-grid ul li a:hover {
+  color: #fff;
+}
+
+.socials a {
+  margin: 0 5px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.3rem;
+}
+
+.copy {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 0.9rem;
+  color: #aaa;
+}
