@@ -1,3 +1,47 @@
+/* Header styling */
+header {
+  text-align: center;
+  padding: 2rem 1rem;
+  background: linear-gradient(135deg, #ff7e5f, #feb47b); /* modern gradient */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  color: white;
+}
+
+/* Stylish heading */
+.shop-heading {
+  font-family: 'Poppins', sans-serif; /* Google Fonts optional */
+  font-size: 3rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #fff;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+  margin-bottom: 0.5rem;
+  transition: transform 0.3s, text-shadow 0.3s;
+}
+
+/* Hover animation */
+.shop-heading:hover {
+  transform: scale(1.05);
+  text-shadow: 4px 4px 12px rgba(0,0,0,0.4);
+}
+
+/* Nav links */
+nav a {
+  margin: 0 15px;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #ffd700; /* golden hover effect */
+}
+
+/* Import Google Fonts (optional, place at top of CSS) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
 .cart {
   margin: 30px auto;
   max-width: 600px;
